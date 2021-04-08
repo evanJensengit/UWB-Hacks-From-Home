@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Business Trip Planner During Pandemic</title>
+</head>
+
+<body>
+    
+    <h1>Business Trip Planner During The Pandemic</h1>
+
+    <!-- Find COVID-19 vaccination sites -->
+    <a href="{{ url_for('findVaccinationSites') }}"><h2>Find Covid-19 Vaccine Sites</h2></a>
+
+    <p>Some explanations...</p>
+
+    <!-- Find COVID-19 stat of a city -->
+    <h2>Find Statistical Data</h2>
+    <p>Some explanation...</p>
+
+    <form action="/covid-stat" method="POST" id="getStatID">
+        <p>City <input type="text" name="city"></p>
+        <p>State <input type="text" name="state"></p>
+    </form>
+
+    <button form="getStatID" type="submit">Find Stat</button>
+
+    {% if showStat == True %}
+        {% autoescape false %}
+            <p>{{stat}}</p>
+        {% endautoescape %}
+    {% endif %}
+
+    <!-- Find flights information -->
+    <h2>Find flights</h2>
+
+    <form action="/flights" method="POST" id="getFlightsID">
+        <p>City <input type="text" name="city"></p>
+        <p>State <input type="text" name="state"></p>
+    </form>
+
+    <button form="getFlightsID" type="submit">Find Flights</button>
+
+    {% if showFlights == True %}
+        {% autoescape false %}
+            <p>{{flights}}</p>
+        {% endautoescape %}
+    {% endif %}
+
+</body>
+
+</html>
