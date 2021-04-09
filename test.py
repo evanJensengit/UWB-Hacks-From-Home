@@ -6,7 +6,8 @@ def main():
     # findVacinationSiteFunc("WA", 98144)
     # testAmadeus()
     # func.getCheapestFlight()
-    func.getCityCode()
+    #func.getCityCode()
+    func.getHotelsFunc()
 
 from amadeus import Client, ResponseError
 

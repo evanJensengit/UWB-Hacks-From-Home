@@ -47,5 +47,20 @@ def getFlights():
 
         return render_template("index.html", flights=str(message), showFlights=True)
 
+
+@app.route('/hotels', methods=["POST", "GET"])
+def getHotels():
+
+    if request.method == "POST":
+
+        # input = request.form["input"]
+
+        result = func.getHotelsFunc()
+
+        message = "Status: " + str(result)
+
+        return render_template("index.html", stat=str(message), showStat=True)
+
+
 if __name__ == '__main__':
    app.run(debug = True)

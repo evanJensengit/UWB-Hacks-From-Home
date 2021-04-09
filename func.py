@@ -18,10 +18,11 @@ def findVacinationSiteFunc(state, zip_code):
     if (response.status_code == 404):      # Request returns a 404 error
         return "No section found."
 
-    r_json = response.json()
+    r_json = response.json() #gets data from json
 
     result = ""
 
+    #iterate through sites and find properties and postal code that match the user query
     for item in r_json['features']:
         if (item['properties']['postal_code'] == str(zip_code)):
             result += "Provider: " + item['properties']['provider_brand_name'] + "<br/>"
@@ -118,3 +119,14 @@ def getCityCode():
             print("City code: " + code["address"]["cityCode"])
     except ResponseError as error:
         raise error
+
+
+def getHotelsFunc():
+    try:
+        # Get list of Hotels by city code
+        hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode='PAR')
+        print(hotels_by_city.data)
+    except ResponseError as error:
+        raise error
+    
+    return "incomplete"
