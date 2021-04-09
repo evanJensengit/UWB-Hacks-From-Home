@@ -1,5 +1,11 @@
 import requests
 import json
+from amadeus import Client, ResponseError, Location
+
+amadeus = Client(
+        client_id='c53rrDvlC2Yn8FI8LUSPXsadNQEem0eP',
+        client_secret='lJlC3bIQmL24AAZe'
+    )
 
 def findVacinationSiteFunc(state, zip_code):
 
@@ -86,3 +92,29 @@ def getFlightFunc():
     # result = json.dumps(r_json, indent=3)
 
     return "Result"
+
+def getCheapestFlight():
+    try:
+        '''
+        Find cheapest dates from city to city.
+        '''
+        response = amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
+        for flight in response.data: 
+            print("Departure date: " + flight["departureDate"])
+            print("Return date: " + flight["returnDate"])
+            print("Price: " + flight["price"]["total"])
+    except ResponseError as error:
+        raise error
+
+def getCityCode():
+    try:
+        '''
+        Return city code.
+        '''
+        response = amadeus.reference_data.locations.get(keyword='London',
+                                                    subType=Location.CITY)
+        for code in response.data:
+            print("Name: " + code["address"]["cityName"])
+            print("City code: " + code["address"]["cityCode"])
+    except ResponseError as error:
+        raise error

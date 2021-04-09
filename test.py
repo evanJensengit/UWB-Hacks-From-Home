@@ -1,9 +1,12 @@
 import requests
 import json
+import func
 
 def main():
     # findVacinationSiteFunc("WA", 98144)
-    testAmadeus()
+    # testAmadeus()
+    # func.getCheapestFlight()
+    func.getCityCode()
 
 from amadeus import Client, ResponseError
 
