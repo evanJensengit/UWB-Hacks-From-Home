@@ -168,24 +168,27 @@ def getHotelsFunc(city, postal_code):
         
         print(hotels_by_city.data)
         for items in hotels_by_city.data:
-            
+            if items["address"]:
+                for addressItems in items["address"]:
+                    result += "Address: " + str(addressItems['address']['lines'])
+                    result += str(addressItems['address']['cityName']) + str(addressItems['address']['countryCode']) 
+                    
             result += "Hotel Name: " + str(items['hotel']['name']) + "<br/>"
-            for moreItems in items:
-
-                result += "Address: " + str(moreItems['address']['lines'])
-                result += str(moreItems['address']['cityName']) + str(moreItems['address']['countryCode']) 
+        
+            result += "Address: " + str(items['hotel']['address'])
+            
 
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             result += "URL: " + str(items['hotel']['media']) + "<br/>""<br/>"
             
             print (items["hotel"]["media"])
             print ('\n')
-
+    
         #print(hotels_by_city.data)
     except ResponseError as error:
         raise error
-    
-    return "incomplete"
+    return result
+
 def getRestaurants(latitude, longitude, dist):
     lat = str(latitude)
     lon = str(longitude)
