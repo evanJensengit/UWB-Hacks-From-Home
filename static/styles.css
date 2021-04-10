@@ -1,7 +1,150 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');*/
+
 body {
     padding: 0;
     margin: 0;
+    background: #8193AD;
 }
 
+#rectangle {
+    position: absolute;
+    width: 80%;
+    height: 105%;
+    left: 432px;
+    top: 0px;
 
+    background: #FFFFFF;
+    border-radius: 116px 0px 0px 116px;
+}
 
+#pic1 {
+    position: absolute;
+    width: 35%;
+    height: 75%;
+    left: 132px;
+    top: 120px;
+
+    background: url("/assets/image\ 1.png");
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 83px;
+}
+
+#h1 {
+    position: absolute;
+    width: 324px;
+    height: 66px;
+    left: 76px;
+    top: 40px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+
+    color: #FFFFFF;
+}
+
+.intro {
+    position: absolute;
+    font-family: Inter;
+    font-style: normal;
+    color: #597393;
+}
+
+#intro_question {
+    left: 20%;
+    right: 8.06%;
+    top: 25%;
+    bottom: 52.73%;
+
+    font-weight: bold;
+    font-size: 48px;
+}
+
+#intro_pitch {
+    left: 20%;
+    right: 8.06%;
+    top: 35%;
+    bottom: 52.73%;
+
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#find_h {
+    position: absolute;
+    width: 51px;
+    height: 16px;
+    left: 20%;
+    top: 50%;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 16px;
+    /* identical to box height, or 67% */
+
+    color: #000000;
+}
+
+#dropdown {
+    position: absolute;
+    width: 555px;
+    height: 40px;
+    left: 20%;
+    top: 400px;
+
+    border: 4px solid;
+    box-sizing: border-box;
+}
+
+#dropdown select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#dropdown select, #dropdown::after {
+    height: 40px;
+}
+   
+#dropdown::after {
+    content: "\25bc"; /* HTML symbol */
+    /* Reposition */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    line-height: 40px; /* Vertical center text */
+}
+
+#button1 {
+    position: absolute;
+    left: 20%;
+    top: 500px;
+    background-color: #C4C4C4;
+    color: white;
+    width: 555px;
+    height: 53px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+}
+
+#myLinks {
+    display: none;
+}
+
+a {
+    color:  #597393;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    display: block;
+}
+
+a.icon {
+    position: absolute;
+    left: 92%;
+}
