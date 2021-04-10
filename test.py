@@ -1,14 +1,14 @@
 import requests
 import json
 import func
+from amadeus import Client, ResponseError
 
 def main():
     # findVacinationSiteFunc("WA", 98144)
     # testAmadeus()
-    # func.getCheapestFlight()
-    func.getCityCode()
-
-from amadeus import Client, ResponseError
+    # func.getCheapestFlight("SEA", "LAX")
+    # func.getCityCode('Los Angeles')
+    func.getRestaurants(47.44889, -122.3094, 10)
 
 def testAmadeus():
     amadeus = Client(
