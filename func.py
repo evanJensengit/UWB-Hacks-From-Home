@@ -1,6 +1,9 @@
 import requests
 import json
 from amadeus import Client, ResponseError, Location
+import datetime
+from datetime import timedelta
+from datetime import datetime, time
 
 amadeus = Client(
         client_id='c53rrDvlC2Yn8FI8LUSPXsadNQEem0eP',
@@ -34,30 +37,34 @@ def findVacinationSiteFunc(state, zip_code):
     return result
 
 
-def getCovidStatusFunc():
+def getCovidStatusFunc(state):
 
-    # https://covidtracking.com/data/api?
+    # https://dev.socrata.com/foundry/data.cdc.gov/9mfq-cb36
+    
+    url = "https://data.cdc.gov/resource/9mfq-cb36.json"
 
-    url = "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica"
+    midnight = datetime.combine(datetime.today(), time.min)
+    previous_2_days = midnight - timedelta(days=2)
+    query_time = previous_2_days.isoformat()
 
-    headers = {
-        'x-rapidapi-key': "03fdf0f62bmsh3bf01c57781f7e0p12f943jsnb2fe73b7d4b4",
-        'x-rapidapi-host': "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
+    params = {
+        '$$app_token': "Tmqrq0AclkLQKJplMYuNs2Opi",
+        'submission_date': query_time,
+        'state': str(state.upper())
         }
 
-    # response = requests.request("GET", url, headers=headers_str)
-
-    r = requests.get(url, headers = headers)
+    r = requests.get(url, params = params)
     
     if (r.status_code == 404):      # Request returns a 404 error
         return "No section found."
 
-    r_json = r.json()
+    r_json = r.json()[0]        # Get dictionary component of json
 
-    # parsed = json.loads(r_json)
-    print(json.dumps(r_json, indent=3))
+    result = "Result at WA state from " + previous_2_days.strftime("%Y-%m-%d %H:%M") + "\n"
+    result += "Total cases: " + r_json["tot_cases"] + "\n"
+    result += "New cases: " + r_json["new_case"] + "\n"
 
-    result = json.dumps(r_json, indent=3)
+    print(result)
 
     return result
 
@@ -95,29 +102,49 @@ def getFlightFunc():
 
     return "Result"
 
-def getCheapestFlight():
+def getCheapestFlight(depart, dest):
     try:
         '''
         Find cheapest dates from city to city.
         '''
-        response = amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
-        for flight in response.data: 
-            print("Departure date: " + flight["departureDate"])
-            print("Return date: " + flight["returnDate"])
-            print("Price: " + flight["price"]["total"])
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode=depart, destinationLocationCode=dest, departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
+        result = ""
+        rangeFlight = len(response.data)
+        for index in range(0, rangeFlight): 
+            flight = response.data[index]
+            data = flight["itineraries"]
+            for item in data:
+                segment = item["segments"][0]
+                result += "Airline: " + segment["carrierCode"] + "<br/>"
+                result += "From: " + segment["departure"]["iataCode"] + "<br/>"
+                result += "Departure date: " + segment["departure"]["at"] + "<br/>"
+                result += "To: " + segment["departure"]["iataCode"] + "<br/>"
+                result += "Return date: " + segment["departure"]["at"] + "<br/>"
+                result += "Airline: " + segment["carrierCode"] + "<br/>"
+                result += "From: " + segment["departure"]["iataCode"] + "<br/>"
+                result += "Departure date: " + segment["departure"]["at"] + "<br/>"
+                result += "To: " + segment["departure"]["iataCode"] + "<br/>"
+                result += "Return date: " + segment["departure"]["at"] + "<br/>"
+                result += "-------------------------------"
+        result += "Price: " + flight["price"]["total"]
+        return result
     except ResponseError as error:
         raise error
 
-def getCityCode():
+def getCityCode(city):
     try:
         '''
         Return city code.
         '''
-        response = amadeus.reference_data.locations.get(keyword='London',
+        response = amadeus.reference_data.locations.get(keyword=city,
                                                     subType=Location.CITY)
+        result = ""
         for code in response.data:
-            print("Name: " + code["address"]["cityName"])
-            print("City code: " + code["address"]["cityCode"])
+            result += "Name: " + code["address"]["cityName"]
+            result += "City code: " + code["address"]["cityCode"]
+            result += code["geoCode"]["latitude"]
+            result += code["geoCode"]["longitude"]
+        return result
     except ResponseError as error:
         raise error
 
@@ -153,3 +180,26 @@ def getHotelsFunc():
         raise error
     
     return "incomplete"
+def getRestaurants(latitude, longitude, dist):
+    lat = str(latitude)
+    lon = str(longitude)
+    distance = str(dist)
+
+    url = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&distance=" + distance + "&key=1f3ce5158d4339dda48dc2ad0e051faa"
+
+    header = {"x-api-key:" "1f3ce5158d4339dda48dc2ad0e051faa"}
+
+    # params = {"lat": lat, "lon": long, "distance": 25 }
+
+    r = requests.get(url)
+
+    r_json = r.json()
+
+    data = r_json["data"]
+    result = ""
+
+    for res in data:
+        result += res["restaurant_name"]
+        result += res["restaurant_website"]
+        result += res["address"]["formatted"]
+    print(r_json)
