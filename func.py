@@ -158,10 +158,10 @@ def getHotelsFunc(city, postal_code):
         result = ""
         #print(hotels_by_city.data)
         for items in hotels_by_city.data:
-            if items["hotel"]["address"]:
-                for addressItems in items["hotel"]["address"]:
-                    result += "Address: " + str(addressItems[0][0])
-                    result += str(addressItems[1][0]) + str(addressItems[2][0]) +"<br/>"
+           # if items["hotel"]["address"]:
+                #for addressItems in items["hotel"]["address"]:
+                    #result += "Address: " + str(addressItems[0][0])
+                    #result += str(addressItems[1][0]) + str(addressItems[2][0]) +"<br/>"
                     
             result += "Hotel Name: " + str(items['hotel']['name']) + "<br/>"
             
