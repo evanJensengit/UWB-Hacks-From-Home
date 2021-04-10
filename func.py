@@ -1,6 +1,9 @@
 import requests
 import json
 from amadeus import Client, ResponseError, Location
+import datetime
+from datetime import timedelta
+from datetime import datetime, time
 
 amadeus = Client(
         client_id='c53rrDvlC2Yn8FI8LUSPXsadNQEem0eP',
@@ -32,66 +35,36 @@ def findVacinationSiteFunc(state, zip_code):
     return result
 
 
-def getCovidStatusFunc():
+def getCovidStatusFunc(state):
 
-    # https://covidtracking.com/data/api?
+    # https://dev.socrata.com/foundry/data.cdc.gov/9mfq-cb36
+    
+    url = "https://data.cdc.gov/resource/9mfq-cb36.json"
 
-    url = "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica"
+    midnight = datetime.combine(datetime.today(), time.min)
+    previous_2_days = midnight - timedelta(days=2)
+    query_time = previous_2_days.isoformat()
 
-    headers = {
-        'x-rapidapi-key': "03fdf0f62bmsh3bf01c57781f7e0p12f943jsnb2fe73b7d4b4",
-        'x-rapidapi-host': "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
+    params = {
+        '$$app_token': "Tmqrq0AclkLQKJplMYuNs2Opi",
+        'submission_date': query_time,
+        'state': str(state.upper())
         }
 
-    # response = requests.request("GET", url, headers=headers_str)
-
-    r = requests.get(url, headers = headers)
+    r = requests.get(url, params = params)
     
     if (r.status_code == 404):      # Request returns a 404 error
         return "No section found."
 
-    r_json = r.json()
+    r_json = r.json()[0]        # Get dictionary component of json
 
-    # parsed = json.loads(r_json)
-    print(json.dumps(r_json, indent=3))
+    result = "Result at WA state from " + previous_2_days.strftime("%Y-%m-%d %H:%M") + "\n"
+    result += "Total cases: " + r_json["tot_cases"] + "\n"
+    result += "New cases: " + r_json["new_case"] + "\n"
 
-    result = json.dumps(r_json, indent=3)
+    print(result)
 
     return result
-
-def getFlightFunc():
-
-    # https://aviationstack.com/documentation
-
-    url = 'http://api.aviationstack.com/v1/flights'
-
-    params = {
-    'access_key': '6080d6c8612fe957573d69b0b0202675',
-    'limit':'10'
-    }
-
-    api_result = requests.get(url, params)
-
-    print(api_result)
-
-    api_response = api_result.json()
-
-    # for flight in api_response:
-    #     if (flight['live']['is_ground'] is False):
-    #         print(u'%s flight %s from %s (%s) to %s (%s) is in the air.' % (
-    #             flight['airline']['name'],
-    #             flight['flight']['iata'],
-    #             flight['departure']['airport'],
-    #             flight['departure']['iata'],
-    #             flight['arrival']['airport'],
-    #             flight['arrival']['iata']))
-
-    # parsed = json.loads(r_json)
-    # print(json.dumps(api_response, indent=3))
-
-    # result = json.dumps(r_json, indent=3)
-
-    return "Result"
 
 def getCheapestFlight():
     try:
