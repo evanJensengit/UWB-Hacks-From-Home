@@ -2,6 +2,7 @@ import requests
 import json
 import func
 from amadeus import Client, ResponseError
+# from amadeus import Client, ResponseError
 
 def main():
     # findVacinationSiteFunc("WA", 98144)
@@ -9,6 +10,7 @@ def main():
     # func.getCheapestFlight("SEA", "LAX")
     # func.getCityCode('Los Angeles')
     func.getRestaurants(47.44889, -122.3094, 10)
+    func.getCovidStatusFunc("WA")
 
 def testAmadeus():
     amadeus = Client(
@@ -48,22 +50,6 @@ def findVacinationSiteFunc(state, zip_code):
             result += "See more at " + item['properties']['url'] + "<br/><br/> \n\n"
 
     print(result)
-
-        # print(u'%s flight %s from %s (%s) to %s (%s) is in the air.' % (
-        #     flight['airline']['name'],
-        #     flight['flight']['iata'],
-        #     flight['departure']['airport'],
-        #     flight['departure']['iata'],
-        #     flight['arrival']['airport'],
-        #     flight['arrival']['iata']))
-
-    # for site in r_json.keys():
-    #     print(type(site))
-    #     if site["properties"]["postal_code"] == "98144":
-    #         # print(site[])
-    #         count += 1
-
-    # return result
 
 if __name__ == "__main__":
     # execute only if run as a script
