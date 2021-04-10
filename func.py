@@ -165,12 +165,14 @@ def getHotelsFunc(city, postal_code):
                     
             result += "Hotel Name: " + str(items['hotel']['name']) + "<br/>"
             
-            result += "Address: " + str(items['hotel']['address'])
-            
+            result += "Address: " + str(items['hotel']['address']['lines'][0]) + " "
+            result += str(items['hotel']['address']['cityName']) + " "
+            result += str(items['hotel']['address']['stateCode']) + " "
+            result += str(items['hotel']['address']['postalCode']) + "<br/>"
             
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             
-            result += "URL: " + str(items['hotel']['media']) + "<br/>""<br/>"
+            result += "URL: " + str(items['hotel']['media'][0]['uri']) + "<br/><br/>"
             
         print (result)
         print ('\n')
