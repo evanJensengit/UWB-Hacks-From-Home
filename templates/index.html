@@ -73,7 +73,22 @@
             <p>{{flights}}</p>
         {% endautoescape %}
     {% endif %}
-
+  
+    <!-- Find hotels information -->
+  <h2>Find Hotels</h2>
+    
+  <form action="/hotels" method="POST" id="getHotelsID">
+      <p>City <input type="text" name="city"></p>
+      <p>Zipcode <input type="text" name="postalCode"></p>
+ </form>
+ 
+ <button form="getHotelsID" type="submit">Find Hotels</button>
+ 
+  {% if showHotels == True %}
+     {% autoescape false %}
+          <p>{{hotels}}</p>
+      {% endautoescape %}
+ {% endif %}
 </body>
 
 </html>

@@ -22,17 +22,17 @@ def findVaccinationSites():
 
     return render_template("vaccination-sites.html")
 
-@app.route('/covid-stat', methods=["POST", "GET"])
-def getCovidStat():
-    if request.method == "POST":
+#@app.route('/covid-stat', methods=["POST", "GET"])
+#def getCovidStat():
+    #if request.method == "POST":
 
         # input = request.form["input"]
 
-        result = func.getCovidStatusFunc()
+        #result = func.getCovidStatusFunc()
 
-        message = "Status: " + str(result)
+        #message = "Status: " + str(result)
 
-        return render_template("index.html", stat=str(message), showStat=True)      
+        #return render_template("index.html", stat=str(message), showStat=True)      
 
 @app.route('/flights', methods=["POST", "GET"])
 def getFlights():
@@ -49,17 +49,22 @@ def getFlights():
 
 
 @app.route('/hotels', methods=["POST", "GET"])
-def getHotels():
+def findHotels():
 
     if request.method == "POST":
-
-        # input = request.form["input"]
-
-        result = func.getHotelsFunc()
+        
+        theCity = request.form["city"] #is this correct way to do it?
+        thePostalCode = request.form["postalCode"]
+        
+        if ((not theCity) or (not thePostalCode)):
+            return render_template("index.html")
+        
+        result = func.getHotelsFunc(theCity, thePostalCode)
 
         message = "Status: " + str(result)
 
-        return render_template("index.html", stat=str(message), showStat=True)
+        return render_template("index.html", hotels=str(message), showHotels=True)
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

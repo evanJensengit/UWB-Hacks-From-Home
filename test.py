@@ -9,13 +9,13 @@ def main():
     # testAmadeus()
     # func.getCheapestFlight()
     #func.getCityCode()
-    func.getHotelsFunc()
+    func.getHotelsFunc("seattle", "98101")
 
 
     # func.getCheapestFlight("SEA", "LAX")
     # func.getCityCode('Los Angeles')
-    func.getRestaurants(47.44889, -122.3094, 10)
-    func.getCovidStatusFunc("WA")
+   # func.getRestaurants(47.44889, -122.3094, 10)
+    #func.getCovidStatusFunc("WA")
 
 def testAmadeus():
     amadeus = Client(

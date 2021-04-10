@@ -149,26 +149,32 @@ def getCityCode(city):
         raise error
 
 
-def getHotelsFunc():
+def getHotelsFunc(city, postal_code):
     try:
+        theCityCode = city[0 : 3]
         # Get list of Hotels by city code
-        hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode='PAR')
-        print(hotels_by_city.data)
         hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode=theCityCode, postalCode = postal_code)
        
         result = "" 
         address = {}
-        address = dict(hotels_by_city.data['hotel']['address'])
+        #address = dict(hotels_by_city.data['hotel']['address'])
         strAddress = ""
-       #print (hotels_by_city.data['hotel']['address'])
+        #print (hotels_by_city.data['type'])
         
-        #for items in address:
-         #   strAddress += address[items]
-        #print (strAddress)
+     
+       # for items in hotels_by_city.data:
+        #    for itemsItems in items:
+         #       print (itemsItems['address']['lines'])
+        
         print(hotels_by_city.data)
         for items in hotels_by_city.data:
+            
             result += "Hotel Name: " + str(items['hotel']['name']) + "<br/>"
-            result += "Address: " + str(items['hotel']['address']) + "<br/>"
+            for moreItems in items:
+
+                result += "Address: " + str(moreItems['address']['lines'])
+                result += str(moreItems['address']['cityName']) + str(moreItems['address']['countryCode']) 
+
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             result += "URL: " + str(items['hotel']['media']) + "<br/>""<br/>"
             
