@@ -2,6 +2,7 @@
 {% block header %}
 <p id="page_name">Hotels and Restaurants</p>
 {% endblock %}
+
 {% block content %}
 <form action="/places" method="POST" id="findPlacesID">
     <input type="text" name="city" class="input_box" id="state_code" value="Enter a city" onClick="this.select();">
@@ -10,13 +11,22 @@
 </form>
 
 <div class="display">
-{% if showHotels == True %}
-    {% autoescape false %}
+    {% if showHotels == True %}
+        {% autoescape false %}
+            {% for items in hotels %}
+                <div class="result">
+                    <p>{{items}}</p>
+                </div>
+            {% endfor %}
+        {% endautoescape %}
+    {% endif %}
+    
+    {% if noResult == True %}
     <div class="result">
-        <p>{{hotels}}</p>
+        <p>No hotels found for {{input}}.</p>
     </div>
-    {% endautoescape %}
-{% endif %}
-{% endblock %}
+    {% endif %}
+    
 </div>
+{% endblock %}
 

@@ -105,12 +105,12 @@ a.icon {
 .result {
     width: 550px;
     height: 255px;
+    margin-top: 50px;
 
     display: flex;
     background: #DAE4ED;
     border-radius: 65px;  
     align-items: center;  
-    text-align: centßer;
 }
 
 .result p {

@@ -18,6 +18,12 @@
             {% endfor %}
         {% endautoescape %}
     {% endif %}
+
+    {% if noResult == True %}
+    <div class="result">
+        <p>No vaccination sites found.</p>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}

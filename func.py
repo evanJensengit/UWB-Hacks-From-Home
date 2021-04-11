@@ -14,12 +14,13 @@ def findVacinationSiteFunc(state, zip_code):
 
     # https://www.vaccinespotter.org/api/
 
+    state = state.upper()
     url = "https://www.vaccinespotter.org/api/v0/states/" + state + ".json"
 
     response = requests.get(url)
     
     if (response.status_code == 404):      # Request returns a 404 error
-        return "No section found."
+        return ""
 
     r_json = response.json() #gets data from json
 
@@ -129,11 +130,11 @@ def getHotelsFunc(city, postal_code):
         theCityCode = city[0 : 3]
         # Get list of Hotels by city code
         hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode=theCityCode, postalCode = postal_code)
-
-        print("city: " + city)
         
         result = ""
+        message = []
         #print(hotels_by_city.data)
+        
         for items in hotels_by_city.data:
            # if items["hotel"]["address"]:
                 #for addressItems in items["hotel"]["address"]:
@@ -150,14 +151,18 @@ def getHotelsFunc(city, postal_code):
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             
             result += "URL: " + str(items['hotel']['media'][0]['uri']) + "<br/><br/>"
+
+            message.append(result)
+            result = ""
             
-        print (result)
-        print ('\n')
+        return message
     
         #print(hotels_by_city.data)
     except ResponseError as error:
-        raise error
-    return result
+        print("oh hey")
+        return ""
+        # raise error
+    # return result
 
 def getRestaurants(latitude, longitude, dist):
     lat = str(latitude)
