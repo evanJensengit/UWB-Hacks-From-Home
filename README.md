@@ -15,40 +15,32 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 ***
 ## Implementation Details
 **Front-end**
-* a
 
 *Tools Used*
 * Figma
 
 
 **Back-end**
-* a
 *Tools Used*
 * Azure - hosted website in the cloud to be publicly accesseble on Microsoft Azure 
 * using their PaaS tools Resource groups and App services 
 * VisualStudio
 * Flask stack
-* Ardeus API  
+* Amadeus API  
 
 ***
 ## Issues Encountered
 **Bugs Fixed**
 * Issue: had problem of getting data from Ardeus API 
 * Solution: used SDK on Ardeus GitHub that specified how to get data from their API
-* 
+
 * Issue: how to get relevant information from the text pulled from Ardeus API on hotels, flights and restaurants 
-* Solution: Python would read in the text from Ardeus API as a dictionary data type which could be searched through 
-* using string matching with keys to obtain relevant information
-* 
+* Solution: Python would read in the text from Ardeus API as a dictionary data type which could be searched through using string matching with keys to obtain relevant information
+
 * Issue: displaying relevant information in a consumable format
 * Soluiton: using Flask framework to implement backend logic with python integrated with HTML/CSS
 
-* a
-* a
-* a
 
 **Future Work to be Done**
-* a
-* a
-* a
-* a
+* implement ML feature of showing the probability of user getting covid if they travel to city
+
