@@ -42,5 +42,5 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 
 
 **Future Work to be Done**
-* implement ML feature of showing the probability of user getting covid if they travel to city
+* implement Naive Bayes model for estimating proabability of infection with COVID given being in a state
 
