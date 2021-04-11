@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('intro.html')
+    return render_template('vaccination-sites.html')
 
 @app.route('/vaccination-sites', methods=["POST", "GET"])
 def findVaccinationSites():

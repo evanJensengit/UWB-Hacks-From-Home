@@ -21,27 +21,18 @@
         <!-- Navigation links (hidden by default) -->
         <div id="menu_links">
             <a href="javascript:void(0)" class="close_menu" onclick="closeNav()">&times;</a>
-            <a href="#news">Home</a>
-            <a href="#contact">Vaccine Distribution Sites</a>
-            <a href="#about">Covid-19 Cases</a>
-            <a href="#about">Flights</a>
-            <a href="#about">Hotels</a>
-            <a href="#about">Restaurants</a>
+            <a href="{{ url_for('intro') }}">Home</a>
+            <a href="{{ url_for('vaccination-sites') }}">Vaccine Distribution Sites</a>
+            <a href="">Covid-19 Cases</a>
+            <a href="">Flights</a>
+            <a href="">Hotels</a>
+            <a href="">Restaurants</a>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
         <a href="javascript:void(0);" class="icon" onclick="openNav()">
             <img src="/static/align-right.png"/>
         </a>
         <div id="search_bar">
-            <p id="page_name">Put the page name here</p>
-            <input id="state_code" class="input_box" type="text" name="stateCode">
-            <input id="zip_code" class="input_box" type="text" name="stateCode">
-        </div>
-        <div class="result">
-            <p>Bla bla bla<br>
-                Bla bla bla<br>
-                Bla bla bla<br>
-            </p>
-        </div>
-        <button id="submit_btn" type="button">Submit</button>
+            <p>{% block header %}{% endblock %}</p>
+            {% block content %}{% endblock %}
     </body>
