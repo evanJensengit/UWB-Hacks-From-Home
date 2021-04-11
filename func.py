@@ -14,12 +14,13 @@ def findVacinationSiteFunc(state, zip_code):
 
     # https://www.vaccinespotter.org/api/
 
+    state = state.upper()
     url = "https://www.vaccinespotter.org/api/v0/states/" + state + ".json"
 
     response = requests.get(url)
     
     if (response.status_code == 404):      # Request returns a 404 error
-        return "No section found."
+        return ""
 
     r_json = response.json() #gets data from json
 
@@ -36,10 +37,9 @@ def findVacinationSiteFunc(state, zip_code):
             result += "&emsp;&emsp;&emsp;" + item['properties']['city'] + ", " + item['properties']['state'] + " " + item['properties']['postal_code'] + "<br/>"
             result += "See more at " + item['properties']['url'] + "<br/><br/>"
             message.append(result)
+            result = ""
 
-    print("message len: ", len(message))
-
-    return message, len(message)
+    return message
 
 
 def getCovidStatusFunc(state):
@@ -61,7 +61,10 @@ def getCovidStatusFunc(state):
     r = requests.get(url, params = params)
     
     if (r.status_code == 404):      # Request returns a 404 error
-        return "No section found."
+        return "", "", ""
+
+    if (r.json() == []):
+        return "", "", ""
 
     r_json = r.json()[0]        # Get dictionary component of json
 
@@ -69,43 +72,10 @@ def getCovidStatusFunc(state):
     # result += "Total cases: " + r_json["tot_cases"] + "\n"
     # result += "New cases: " + r_json["new_case"] + "\n"
 
-    # print(result)
+    date = previous_2_days.strftime("%Y-%m-%d %H:%M")
 
-    return r_json["tot_cases"], r_json["new_case"]
+    return r_json["tot_cases"], r_json["new_case"], date
 
-def getFlightFunc():
-
-    # https://aviationstack.com/documentation
-
-    url = 'http://api.aviationstack.com/v1/flights'
-
-    params = {
-    'access_key': '6080d6c8612fe957573d69b0b0202675',
-    'limit':'10'
-    }
-
-    api_result = requests.get(url, params)
-
-    print(api_result)
-
-    api_response = api_result.json()
-
-    # for flight in api_response:
-    #     if (flight['live']['is_ground'] is False):
-    #         print(u'%s flight %s from %s (%s) to %s (%s) is in the air.' % (
-    #             flight['airline']['name'],
-    #             flight['flight']['iata'],
-    #             flight['departure']['airport'],
-    #             flight['departure']['iata'],
-    #             flight['arrival']['airport'],
-    #             flight['arrival']['iata']))
-
-    # parsed = json.loads(r_json)
-    # print(json.dumps(api_response, indent=3))
-
-    # result = json.dumps(r_json, indent=3)
-
-    return "Result"
 
 def getCheapestFlight(depart, dest):
     try:
@@ -150,6 +120,7 @@ def getCityCode(city):
             result += code["geoCode"]["latitude"]
             result += code["geoCode"]["longitude"]
         return result
+
     except ResponseError as error:
         raise error
 
@@ -161,7 +132,9 @@ def getHotelsFunc(city, postal_code):
         hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode=theCityCode, postalCode = postal_code)
         
         result = ""
+        message = []
         #print(hotels_by_city.data)
+        
         for items in hotels_by_city.data:
            # if items["hotel"]["address"]:
                 #for addressItems in items["hotel"]["address"]:
@@ -178,14 +151,18 @@ def getHotelsFunc(city, postal_code):
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             
             result += "URL: " + str(items['hotel']['media'][0]['uri']) + "<br/><br/>"
+
+            message.append(result)
+            result = ""
             
-        print (result)
-        print ('\n')
+        return message
     
         #print(hotels_by_city.data)
     except ResponseError as error:
-        raise error
-    return result
+        print("oh hey")
+        return ""
+        # raise error
+    # return result
 
 def getRestaurants(latitude, longitude, dist):
     lat = str(latitude)

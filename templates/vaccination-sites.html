@@ -3,20 +3,30 @@
 <p id="page_name">Vaccine Sites</p>
 {% endblock %}
 {% block content %}
-<form action="/vaccination-sites" method="POST" id="findSitesID">
-    <input type="text" name="state" class="input_box" id="state_code">
-    <input type="text" name="zip_code" class="input_box" id="zip_code">
-    <button id="submit_btn" form="findSitesID" type="submit">Submit</button>
-</form>
+<div id="search_bar">
+    <p>Vaccine Distribution Sites</p>
+    <form action="/vaccination-sites" method="POST" id="findSitesID">
+        <input type="text" name="state" class="input_box" id="state_code" value="Enter a state initial (e.g. WA)" onClick="this.select();">
+        <input type="text" name="zip_code" class="input_box" id="zip_code"value="Enter a zip code (e.g. 98031)" onClick="this.select();">
+        <button id="submit_btn" form="findSitesID" type="submit">Submit</button>
+    </form>
+</div>
+
 <div class="display">
     {% if showSites == True %}
         {% autoescape false %}
-            {% for key in message %}
+            {% for items in message %}
                 <div class="result">
-                    <p>{{key}}</p>
+                    <p>{{items}}</p>
                 </div>
             {% endfor %}
         {% endautoescape %}
+    {% endif %}
+
+    {% if noResult == True %}
+    <div class="result">
+        <p>No vaccination sites found.</p>
+    </div>
     {% endif %}
 </div>
 

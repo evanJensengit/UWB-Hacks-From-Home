@@ -1,8 +1,14 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 #website_name {
     position: absolute;
     width: 324px;
-    height: 66px;
+    height: 200px;
     left: 76px;
+    margin: 30px;
 
     font-family: Roboto;
     font-style: normal;
@@ -19,6 +25,7 @@
     height: 15%;
     left: 2%;
     top: 20%;
+    margin-top: 50px;
 
     background: #6781C6;
     border-radius: 116px;
@@ -90,13 +97,15 @@
 }
 
 a.icon {
-    position: absolute;
+    position: relative;
     left: 90%;
+    margin: 30px;
 }
 
 .result {
     width: 550px;
     height: 255px;
+    margin-top: 50px;
 
     display: flex;
     background: #DAE4ED;
@@ -105,17 +114,22 @@ a.icon {
 }
 
 .result p {
+    position: relative;
+    top: 5%;
+    left: 5%;
+    right: 5%;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .display {
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex: 2 1 auto;
     left: 1%;
-    top: 90%;
+    top: 200px;
 }
 
 #submit_btn {
@@ -128,4 +142,15 @@ a.icon {
     background: #597393;
     border-radius: 65px;    
     color: white;
+}
+
+#search_bar p {
+    color: white;
+    left: 2%;
+    top: 35%;
+    position: absolute;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: bold;
 }

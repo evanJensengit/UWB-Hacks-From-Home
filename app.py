@@ -14,11 +14,16 @@ def findVaccinationSites():
         state = request.form["state"]
         zip_code = request.form["zip_code"]
 
-        result, messageLength = func.findVacinationSiteFunc(state, zip_code)
+        result = func.findVacinationSiteFunc(state, zip_code)
 
-        print(type(result))
+        if (result==""):         # if no info is found
+            noResult = True
+            showSites = False
+        else:                   # information found
+            noResult = False
+            showSites = True
 
-        return render_template("vaccination-sites.html", message=result, messageLength=messageLength, showSites=True)
+        return render_template("vaccination-sites.html", message=result, showSites=showSites, noResult=noResult)
 
     return render_template("vaccination-sites.html")
 
@@ -27,13 +32,17 @@ def getCovidStat():
     if request.method == "POST":
 
         state = request.form["state"]
+        print("in app, state = " + state)
+        total, new, date = func.getCovidStatusFunc(state)
 
-        total, new = func.getCovidStatusFunc(state)
+        if (total==""):         # if no info is found
+            noResult = True
+            showStat = False
+        else:                   # information found
+            noResult = False
+            showStat = True
 
-        # message = "Status: " + str(result)
-        # return render_template("index.html", stat=str(message), showStat=True)      
-
-        return render_template("covid-stat.html", totalCases=total, newCases=new, showStat=True)    
+        return render_template("covid-stat.html", totalCases=total, newCases=new, date=date, showStat=showStat, noResult=noResult)    
 
     return render_template("covid-stat.html")
 
@@ -54,18 +63,27 @@ def getFlights():
 
 @app.route('/places', methods=["POST", "GET"])
 def findPlaces():
-
     if request.method == "POST":
         
-        theCity = request.form["city"] #is this correct way to do it?
-        thePostalCode = request.form["postalCode"]
+        theCity = request.form["city"]
+        thePostalCode = request.form["zip_code"]
+
+        # to display when no hotel is found
+        input = theCity + " city at zip code" + thePostalCode
         
-        if ((not theCity) or (not thePostalCode)):
-            return render_template("places.html")
+        # if ((not theCity) or (not thePostalCode)):
+        #     return render_template("places.html")
         
         result = func.getHotelsFunc(theCity, thePostalCode)
 
-        return render_template("index.html", hotels=message, showHotels=True)
+        if (result==""):         # if no info is found
+            noResult = True
+            showHotels = False
+        else:                   # information found
+            noResult = False
+            showHotels = True
+
+        return render_template("places.html", hotels=result, showHotels=showHotels, noResult=noResult, input=input)
     
     return render_template("places.html")
 

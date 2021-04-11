@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 <form action="/covid-stat" method="POST" id="getStatID">
-    <input type="text" name="state" class="input_box" id="state_code">
+    <input type="text" name="state" class="input_box" id="state_code" value="Enter a state initial (e.g. WA)" onClick="this.select();">
     <button id="submit_btn" form="getStatID" type="submit">Submit</button>
 </form>
 
@@ -12,31 +12,21 @@
     {% if showStat == True %}
         {% autoescape false %}
             <div class="result">
-                <p>Total cases: {{totalCases}}</p>
-                <p>New cases: {{newCases}}</p>
+                <p>Total cases <br/> {{totalCases}} <br/><br/>  Last updated: {{date}} </p>
             </div>
-        {% endautoescape %}
-    {% endif %}
-</div>
-
-{% endblock %}
-
-
-{% block content2 %}
-<form action="/covid-stat" method="POST" id="getStatID">
-    <input type="text" name="state" class="input_box" id="state_code">
-    <button id="submit_btn" form="getStatID" type="submit">Submit</button>
-</form>
-
-<div class="display">
-    {% if showStat == True %}
-        {% autoescape false %}
             <div class="result">
-                <p>Total cases: {{totalCases}}</p>
-                <p>New cases: {{newCases}}</p>
+                <p>New cases <br/>{{newCases}} <br/><br/>  Last updated: {{date}} </p>
             </div>
         {% endautoescape %}
+    {% endif %}
+
+    {% if noResult == True %}
+        <div class="result">
+            <p>Please enter a state initial</p>
+        </div>
     {% endif %}
 </div>
 
 {% endblock %}
+
+
