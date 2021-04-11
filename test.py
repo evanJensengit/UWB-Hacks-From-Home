@@ -11,14 +11,19 @@ def main():
     #func.getCityCode()
     # func.getHotelsFunc("seattle", "98101")
 
-
-    # func.getCheapestFlight("SEA", "LAX")
+    departCityCode = func.getCityCode("SEATTLE")
+    destCityCode = func.getCityCode("LAX")
+    print(departCityCode)
+    print("\n"+ destCityCode)
+    func.getCheapestFlight(departCityCode, destCityCode)
     # func.getCityCode('Los Angeles')
     result = func.getRestaurants(code=98011)
     print(result)
     '''a, b = func.getCovidStatusFunc("WA")
+    # func.getRestaurants(47.44889, -122.3094, 10)
+    #a, b = func.getCovidStatusFunc("WA")
 
-    print(a, b)
+    #print(a, b)
 
 def testAmadeus():
     amadeus = Client(

@@ -2,20 +2,35 @@
 {% block header %}
 <p id="page_name">Flights</p>
 {% endblock %}
-{% block content %}
-<form action="/covid-stat" method="POST" id="getStatID">
-    <input type="text" name="state" class="input_box" id="state_code">
-    <button id="submit_btn" form="getStatID" type="submit">Submit</button>
-</form>
 
-<div class="display">
-    {% if showStat == True %}
-        {% autoescape false %}
-            <div class="result">
-                <p>hi</p>
-            </div>
-        {% endautoescape %}
-    {% endif %}
+{% block content %}
+<div id="search_bar">
+    <p>Flights</p>
+    <form action="/places" method="POST" id="findFlightsID">
+        <input type="text" name="depart" class="input_box" id="depart" value="Enter Departure City" onClick="this.select();">
+        <input type="text" name="dest" class="input_box" id="dest" value="Enter Destination City" onClick="this.select();">
+        <button id="submit_btn" form="findFlightsID" type="submit">Submit</button>
+    </form>
 </div>
 
+<div class="display">
+    {% if showFlights == True %}
+        {% autoescape false %}
+            <p>Here are the flights that we can find:</p>
+            {% for items in flights %}
+                <div class="result">
+                    <p>{{items}}</p>
+                </div>
+            {% endfor %}
+        {% endautoescape %}
+    {% endif %}
+    
+    {% if noResult == True %}
+    <div class="result">
+        <p>No flights found for {{input}}.</p>
+    </div>
+    {% endif %}
+    
+</div>
 {% endblock %}
+
