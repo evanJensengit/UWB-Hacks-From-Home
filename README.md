@@ -34,10 +34,12 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 **Bugs Fixed**
 * Issue: had problem of getting data from Ardeus API 
 * Solution: used SDK on Ardeus GitHub that specified how to get data from their API
+
 * Issue: how to get relevant information from the text pulled from Ardeus API on hotels, flights and restaurants 
 * Solution: Python would read in the text from Ardeus API as a dictionary data type which could be searched through using string matching with keys to obtain relevant information
+
 * Issue: displaying relevant information in a consumable format
-* Soluiton: using Flask framework to implement backend logic with python integrated with HTML/CSS
+* Solution: using Flask framework to implement backend logic with python integrated with HTML/CSS
 
 
 **Future Work to be Done**
