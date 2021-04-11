@@ -123,7 +123,7 @@ body {
     position: absolute;
     left: 20%;
     top: 500px;
-    background-color: #C4C4C4;
+    background-color: #597393;
     color: white;
     width: 555px;
     height: 53px;
@@ -169,6 +169,6 @@ body {
 }
 
 a.icon {
-    position: absolute;
+    position: relative;
     left: 90%;
 }
