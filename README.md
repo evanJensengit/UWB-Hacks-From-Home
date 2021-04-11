@@ -1,7 +1,7 @@
 # Covid-19 Business Trip Planner
 
 ## Goals of the Project:
-Create a website to allows users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
+Create a website to allow users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
 We also combined features of helping to understand the current ongoing covid-19 cases in the designated areas, as well as areas for vaccine distribution sites that may be necessary prior from traveling. 
 As a result, the goal of our project is to inform the covid-19 situations (and vaccine distribution sites) for our users who are flying across states and offering recommended resources available around them.
 
