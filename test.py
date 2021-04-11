@@ -3,7 +3,10 @@ import json
 import func
 from amadeus import Client, ResponseError
 # from amadeus import Client, ResponseError
-
+amadeus = Client(
+        client_id='c53rrDvlC2Yn8FI8LUSPXsadNQEem0eP',
+        client_secret='lJlC3bIQmL24AAZe'
+    )
 def main():
     # findVacinationSiteFunc("WA", 98144)
    
@@ -19,14 +22,23 @@ def main():
     destCityCode = func.getCityCode("redmond")
     print(departCityCode)
     print("\n"+ destCityCode)'''
-    func.getCheapestFlight("SEA", "LAX")
+    #func.getCheapestFlight("SEA", "LAX")
+
+    try:
+        response = amadeus.get('/v2/shopping/flight-cheapest-date', originLocationCode='SYD',
+            destinationLocationCode='BKK',
+            departureDate='2021-04-01',
+            adults=1)
+        print(response.data)
+    except ResponseError as error:
+        print(error)
     # func.getCityCode('Los Angeles')
     '''result = func.getRestaurants(code=98011)
     print(result)'''
     '''a, b = func.getCovidStatusFunc("WA")
     # func.getRestaurants(47.44889, -122.3094, 10)
     #a, b = func.getCovidStatusFunc("WA")
-
+    
     #print(a, b)
 
 def testAmadeus():
