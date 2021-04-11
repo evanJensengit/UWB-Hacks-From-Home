@@ -6,8 +6,7 @@ from datetime import timedelta
 from datetime import datetime, time
 
 amadeus = Client(
-        client_id='c53rrDvlC2Yn8FI8LUSPXsadNQEem0eP',
-        client_secret='lJlC3bIQmL24AAZe'
+
     )
 
 def findVacinationSiteFunc(state, zip_code):
@@ -79,8 +78,7 @@ def getCovidStatusFunc(state):
 
 def getCheapestFlight(depart, dest):
     amadeus = Client(
-        client_id='C9uBehZwr9GRWCwz0eNF0TSMHn1hVv2x',
-        client_secret='gLkTCL8V32aLUOdV'
+
     )
     try:
         '''
@@ -171,7 +169,7 @@ def getHotelsFunc(city, postal_code):
 def getRestaurants(code):
     zipcode = str(code)
 
-    url = "https://api.documenu.com/v2/restaurants/zip_code/" + zipcode + "?key=1f3ce5158d4339dda48dc2ad0e051faa"
+    url = "https://api.documenu.com/v2/restaurants/zip_code/" + zipcode 
 
     r = requests.get(url)
 
