@@ -78,6 +78,11 @@ def getCovidStatusFunc(state):
 
 
 def getCheapestFlight(depart, dest):
+    print ("before try")
+    amadeus = Client(
+        client_id='C9uBehZwr9GRWCwz0eNF0TSMHn1hVv2x',
+        client_secret='gLkTCL8V32aLUOdV'
+    )
     try:
         '''
         Find cheapest dates from city to city.
@@ -85,6 +90,9 @@ def getCheapestFlight(depart, dest):
         depart = str(depart)
         dest = str(dest)
         response = amadeus.shopping.flight_offers_search.get(originLocationCode='SEA', destinationLocationCode='LAX', departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
+        print ("in try")
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode="SEA", destinationLocationCode="BKK", departureDate='2021-04-10', adults=1)
+        print ("in try after amadeus call")
         result = ""
         rangeFlight = len(response.data)
         for index in range(0, rangeFlight): 
@@ -104,6 +112,7 @@ def getCheapestFlight(depart, dest):
                 result += "Return date: " + segment["departure"]["at"] + "<br/>"
                 result += "-------------------------------"
         result += "Price: " + flight["price"]["total"]
+        print(result)
         return result
     except ResponseError as error:
         raise error
@@ -135,10 +144,6 @@ def getHotelsFunc(city, postal_code):
         #print(hotels_by_city.data)
         
         for items in hotels_by_city.data:
-           # if items["hotel"]["address"]:
-                #for addressItems in items["hotel"]["address"]:
-                    #result += "Address: " + str(addressItems[0][0])
-                    #result += str(addressItems[1][0]) + str(addressItems[2][0]) +"<br/>"
                     
             result += "Hotel Name: " + str(items['hotel']['name']) + "<br/>"
             
