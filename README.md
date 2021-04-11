@@ -1,17 +1,18 @@
 # Covid-19 Business Trip Planner
 
-##Goals of the Project:
+## Goals of the Project:
 
 
-##Desired User Experience
+## Desired User Experience
 
-##Implementation Details
+## Implementation Details
 
-##Issues Encountered:
+## Issues Encountered:
 **Bugs Fixed**
-*
-*
-*
-*
+
+* List
+* List
+* List
+* List
 
 **Future Work to be Done**
