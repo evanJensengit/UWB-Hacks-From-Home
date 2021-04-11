@@ -25,8 +25,9 @@
                 <a href="{{ url_for('index') }}">Home</a>
                 <a href="{{ url_for('findVaccinationSites') }}">Vaccine Distribution Sites</a>
                 <a href="{{ url_for('getCovidStat') }}">Covid-19 Cases</a>
-                <a href="#about">Flights</a>
-                <a href="{{ url_for('findPlaces') }}">Hotels and Restaurants</a>
+                <a href="{{ url_for('getFlights') }}">Flights</a>
+                <a href="{{ url_for('findPlaces') }}">Hotels</a>
+                <a href="{{ url_for('findRest') }}">Restaurants</a>
             </div>
             <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
             <a href="javascript:void(0);" class="icon" onclick="openNav()">
@@ -41,7 +42,7 @@
                 <option value="covid-stat">Covid-19 Cases</option>
                 <option value="flights">Flights</option>
                 <option value="hotels">Hotels</option>
-                <option value="rest">Restaurants</option>
+                <option value="restaurants">Restaurants</option>
             </select>  
             <button id="button1" type="button" onclick="goToScreen()">Enter</button>
         </div>
