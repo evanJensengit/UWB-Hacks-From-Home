@@ -14,7 +14,8 @@
     {% if showStat == True %}
         {% autoescape false %}
             <div class="result">
-                <p>Total cases: <br/> {{totalCases}} <br/><br/>  Last updated: {{date}} </p>
+                <p>Total cases:</p>
+                <p>{{totalCases}} <br/><br/>  Last updated: {{date}} </p>
             </div>
             <div class="result">
                 <p>New cases: <br/>{{newCases}} <br/><br/>  Last updated: {{date}} </p>

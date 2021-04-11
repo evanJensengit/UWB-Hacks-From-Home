@@ -71,7 +71,7 @@ def getFlights():
             showFlights = True
         message = "Status: " + str(result)
 
-        return render_template("flights.html", flights=str(message), showFlights=True)
+        return render_template("flights.html", flights=result, showFlights=True)
     return render_template("flights.html")
 
 @app.route('/hotels', methods=["POST", "GET"])

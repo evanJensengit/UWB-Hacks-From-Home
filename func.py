@@ -89,10 +89,9 @@ def getCheapestFlight(depart, dest):
         '''
         depart = str(depart)
         dest = str(dest)
-        response = amadeus.shopping.flight_offers_search.get(originLocationCode='SEA', destinationLocationCode='LAX', departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
-        print ("in try")
-        response = amadeus.shopping.flight_offers_search.get(originLocationCode="SEA", destinationLocationCode="BKK", departureDate='2021-04-10', adults=1)
-        print ("in try after amadeus call")
+        message = []
+        # response = amadeus.shopping.flight_offers_search.get(originLocationCode='SEA', destinationLocationCode='LAX', departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode=depart, destinationLocationCode=dest, departureDate=datetime.today().strftime('%Y-%m-%d'), adults=1)
         result = ""
         rangeFlight = len(response.data)
         for index in range(0, rangeFlight): 
@@ -110,10 +109,14 @@ def getCheapestFlight(depart, dest):
                 result += "Departure date: " + segment["departure"]["at"] + "<br/>"
                 result += "To: " + segment["departure"]["iataCode"] + "<br/>"
                 result += "Return date: " + segment["departure"]["at"] + "<br/>"
-                result += "-------------------------------"
+
+                message.append(result)
+                result = ""
+    
         result += "Price: " + flight["price"]["total"]
-        print(result)
-        return result
+        # print(result)
+        print(message)
+        return message
     except ResponseError as error:
         raise error
 
