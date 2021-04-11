@@ -116,8 +116,9 @@ a.icon {
 .result p {
     position: relative;
     top: 5%;
-    left: 5%;
+    left: 20%;
     right: 5%;
+    text-align: center;
     font-family: Inter;
     font-size: 20px;
 }
@@ -170,4 +171,20 @@ a.icon {
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
+}
+
+.displayCase {
+    display: flex;
+    position: absolute;
+    flex-wrap: wrap;
+    flex: 2 2 0;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 2 1 0;
+    left: 1%;
+    top: 50%;
+}
+
+#whiteD {
+    background-color: white;
 }

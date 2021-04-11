@@ -82,8 +82,9 @@ def getCheapestFlight(depart, dest):
         '''
         Find cheapest dates from city to city.
         '''
-
-        response = amadeus.shopping.flight_offers_search.get(originLocationCode=depart, destinationLocationCode=dest, departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
+        depart = str(depart)
+        dest = str(dest)
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode='SEA', destinationLocationCode='LAX', departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
         result = ""
         rangeFlight = len(response.data)
         for index in range(0, rangeFlight): 
