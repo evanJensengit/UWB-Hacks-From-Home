@@ -1,4 +1,5 @@
 # Covid-19 Business Trip Planner
+*Track: Tools*
 
 ## Goals of the Project:
 Create a website to allow users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
@@ -42,5 +43,5 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 
 
 **Future Work to be Done**
-* implement Naive Bayes model for estimating proabability of infection with COVID given being in a state
+* implement ML feature of showing the probability of user getting covid if they travel to city
 
