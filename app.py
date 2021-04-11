@@ -74,7 +74,7 @@ def getFlights():
         return render_template("flights.html", flights=str(message), showFlights=True)
     return render_template("flights.html")
 
-@app.route('/places', methods=["POST", "GET"])
+@app.route('/hotels', methods=["POST", "GET"])
 def findPlaces():
     if request.method == "POST":
         
@@ -96,9 +96,34 @@ def findPlaces():
             noResult = False
             showHotels = True
 
-        return render_template("places.html", hotels=result, showHotels=showHotels, noResult=noResult, input=input)
+        return render_template("hotels.html", hotels=result, showHotels=showHotels, noResult=noResult, input=input)
     
-    return render_template("places.html")
+    return render_template("hotels.html")
+
+@app.route('/rest', methods=["POST", "GET"])
+def findRest():
+    if request.method == "POST":
+        thePostalCode = request.form["zip_code"]
+
+        # to display when no hotel is found
+        input = "zip code" + thePostalCode
+        
+        # if ((not theCity) or (not thePostalCode)):
+        #     return render_template("places.html")
+        
+        result = func.getRestaurants(thePostalCode)
+        print(result)
+
+        if (result==""):         # if no info is found
+            noResult = True
+            showRes = False
+        else:                   # information found
+            noResult = False
+            showRes = True
+
+        return render_template("rest.html", res=result, showRes=showRes, noResult=noResult, input=input)
+    
+    return render_template("rest.html")
 
 
 if __name__ == '__main__':

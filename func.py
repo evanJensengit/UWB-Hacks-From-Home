@@ -124,7 +124,7 @@ def getCityCode(city):
                                                     subType=Location.CITY)
         result = ""
         for code in response.data:
-            result += "City code: " + code["address"]["cityCode"]
+            result = code["address"]["cityCode"]
         return result
 
     except ResponseError as error:
@@ -152,7 +152,7 @@ def getHotelsFunc(city, postal_code):
             
             result += "Rating: " + str(items['hotel']['rating']) + "<br/>"
             
-            result += "URL: " + str(items['hotel']['media'][0]['uri']) + "<br/><br/>"
+            result += '<a href="' + str(items['hotel']['media'][0]['uri']) + '">Link</a>' + "<br/><br/>"
 
             message.append(result)
             result = ""
@@ -166,16 +166,10 @@ def getHotelsFunc(city, postal_code):
         # raise error
     # return result
 
-def getRestaurants(latitude, longitude, dist):
-    lat = str(latitude)
-    lon = str(longitude)
-    distance = str(dist)
+def getRestaurants(code):
+    zipcode = str(code)
 
-    url = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&distance=" + distance + "&key=1f3ce5158d4339dda48dc2ad0e051faa"
-
-    header = {"x-api-key:" "1f3ce5158d4339dda48dc2ad0e051faa"}
-
-    # params = {"lat": lat, "lon": long, "distance": 25 }
+    url = "https://api.documenu.com/v2/restaurants/zip_code/" + zipcode + "?key=1f3ce5158d4339dda48dc2ad0e051faa"
 
     r = requests.get(url)
 
@@ -183,9 +177,12 @@ def getRestaurants(latitude, longitude, dist):
 
     data = r_json["data"]
     result = ""
+    message = []
 
     for res in data:
-        result += res["restaurant_name"]
-        result += res["restaurant_website"]
-        result += res["address"]["formatted"]
-    print(r_json)
+        result += "Restaurant name: " + str(res["restaurant_name"]) + "</br>"
+        result += "Address: " + str(res["address"]["formatted"]) + "</br>"
+        result += '<a href="' + str(res["restaurant_website"]) + '"' + ">Link</a>"
+        message.append(result)
+        result = ""
+    return message

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block header %}
+<p id="page_name">Hotels and Restaurants</p>
+{% endblock %}
+
+{% block content %}
+<div id="search_bar">
+    <p>Hotels and Restaurants</p>
+    <form action="/rest" method="POST" id="findPlacesID">
+        <input type="text" name="zip_code" class="input_box" id="zip_code" placeholder="Enter zip code" onClick="this.select();">
+        <button id="submit_btn" form="findPlacesID" type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="space"></div>
+
+    {% if showRes == True %}
+        {% autoescape false %}
+            <p class="p_result">Here are the restaurants that we can find:</p>
+            <div class="display">
+            {% for items in res %}
+                <div class="result">
+                    <p>{{items}}</p>
+                </div>
+            {% endfor %}
+        {% endautoescape %}
+    {% endif %}
+    
+    {% if noResult == True %}
+        <div class="result">
+            <p>No retaurants found for {{input}}.</p>
+        </div>
+    {% endif %}
+{% endblock %}

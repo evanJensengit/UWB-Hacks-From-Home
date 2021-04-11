@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Business Trip Planner During Pandemic</title>
+</head>
+
+<body>
+    
+    <h1>Business Trip Planner During The Pandemic</h1>
+
+    <h2>Find Covid-19 Vaccine Distribution Sites</h2>
+
+    <form action="/vaccination-sites" method="POST" id="findSitesID">
+        <p>State <input type="text" name="state"></p>
+        <p>Zip code <input type="text" name="zip_code"></p>
+    </form>
+
+    <button form="findSitesID" type="submit">Find Vaccine Distribution Sites</button>
+
+    {% if showSites == True %}
+        {% autoescape false %}
+            <p>{{message}}</p>
+        {% endautoescape %}
+    {% endif %}
+
+
+</body>
+
+</html>
