@@ -12,22 +12,25 @@
     </form>
 </div>
 
-<div class="display">
-    {% if showSites == True %}
-        {% autoescape false %}
+{% if showSites == True %}
+    {% autoescape false %}
+        <p class="p_result">Here are the vaccination sites that we can find:</p>
+        <div class="display">
             {% for items in message %}
                 <div class="result">
                     <p>{{items}}</p>
                 </div>
             {% endfor %}
-        {% endautoescape %}
-    {% endif %}
+            <div class="result" id="whiteD"></div>
+            <div class="result" id="whiteD"></div>
+        </div>
+    {% endautoescape %}
+{% endif %}
 
     {% if noResult == True %}
     <div class="result">
         <p>No vaccination sites found.</p>
     </div>
     {% endif %}
-</div>
 
 {% endblock %}

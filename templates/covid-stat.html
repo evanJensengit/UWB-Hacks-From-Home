@@ -14,11 +14,10 @@
     {% if showStat == True %}
         {% autoescape false %}
             <div class="result">
-                <p>Total cases:</p>
-                <p>{{totalCases}} <br/><br/>  Last updated: {{date}} </p>
+                <p id="case">Total cases: <br/><span style="font-size: 50px">{{totalCases}}</span><br/><br/>  Last updated: {{date}} </p>
             </div>
             <div class="result">
-                <p>New cases: <br/>{{newCases}} <br/><br/>  Last updated: {{date}} </p>
+                <p id="case">New cases: <br/><span style="font-size: 50px">{{newCases}}</span><br/><br/>  Last updated: {{date}} </p>
             </div>
             <div class="result" id="whiteD"></div>
             <div class="result" id="whiteD"></div>

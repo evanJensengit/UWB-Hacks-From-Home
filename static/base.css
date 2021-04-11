@@ -139,7 +139,6 @@ a.icon {
     top: 5%;
     margin-left: 15%;
     right: 5%;
-    text-align: center;
     font-family: Inter;
     font-size: 20px;
 }
@@ -208,4 +207,8 @@ a.icon {
 
 #whiteD {
     background-color: white;
+}
+
+#case {
+    margin-left: 25%;
 }
