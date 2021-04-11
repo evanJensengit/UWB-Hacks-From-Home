@@ -24,6 +24,7 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 * a
 
 *Tools Used*
+* a
 
 ***
 ## Issues Encountered
