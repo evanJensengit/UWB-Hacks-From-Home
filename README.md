@@ -1,5 +1,5 @@
 # Covid-19 Business Trip Planner
-**Track: Tools**
+**Track: Tools, Wildcard**
 
 ## Goals of the Project:
 Create a website to allow users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
