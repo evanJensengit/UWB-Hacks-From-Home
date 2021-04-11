@@ -11,9 +11,9 @@
 <div class="display">
     {% if showSites == True %}
         {% autoescape false %}
-            {% for key in message %}
+            {% for items in message %}
                 <div class="result">
-                    <p>{{key}}</p>
+                    <p>{{items}}</p>
                 </div>
             {% endfor %}
         {% endautoescape %}

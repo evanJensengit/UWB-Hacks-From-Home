@@ -6,8 +6,9 @@ body {
 #website_name {
     position: absolute;
     width: 324px;
-    height: 66px;
+    height: 200px;
     left: 76px;
+    margin: 30px;
 
     font-family: Roboto;
     font-style: normal;
@@ -24,6 +25,7 @@ body {
     height: 15%;
     left: 2%;
     top: 20%;
+    margin-top: 50px;
 
     background: #6781C6;
     border-radius: 116px;
@@ -97,6 +99,7 @@ body {
 a.icon {
     position: absolute;
     left: 90%;
+    margin: 30px;
 }
 
 .result {

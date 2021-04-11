@@ -36,10 +36,9 @@ def findVacinationSiteFunc(state, zip_code):
             result += "&emsp;&emsp;&emsp;" + item['properties']['city'] + ", " + item['properties']['state'] + " " + item['properties']['postal_code'] + "<br/>"
             result += "See more at " + item['properties']['url'] + "<br/><br/>"
             message.append(result)
+            result = ""
 
-    print("message len: ", len(message))
-
-    return message, len(message)
+    return message
 
 
 def getCovidStatusFunc(state):

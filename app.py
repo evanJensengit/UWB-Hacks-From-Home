@@ -14,11 +14,11 @@ def findVaccinationSites():
         state = request.form["state"]
         zip_code = request.form["zip_code"]
 
-        result, messageLength = func.findVacinationSiteFunc(state, zip_code)
+        result = func.findVacinationSiteFunc(state, zip_code)
 
-        print(type(result))
+        print(result)
 
-        return render_template("vaccination-sites.html", message=result, messageLength=messageLength, showSites=True)
+        return render_template("vaccination-sites.html", message=result, showSites=True)
 
     return render_template("vaccination-sites.html")
 
