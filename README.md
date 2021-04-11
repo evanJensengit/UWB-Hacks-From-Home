@@ -21,6 +21,7 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 
 
 **Back-end**
+
 *Tools Used*
 * Azure - hosted website in the cloud to be publicly accesseble on Microsoft Azure 
 * using their PaaS tools Resource groups and App services 
