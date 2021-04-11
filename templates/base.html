@@ -23,10 +23,9 @@
             <a href="javascript:void(0)" class="close_menu" onclick="closeNav()">&times;</a>
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('findVaccinationSites') }}">Vaccine Distribution Sites</a>
-            <a href="">Covid-19 Cases</a>
-            <a href="">Flights</a>
-            <a href="">Hotels</a>
-            <a href="">Restaurants</a>
+            <a href="{{ url_for('getCovidStat') }}">Covid-19 Cases</a>
+            <a href="#about">Flights</a>
+            <a href="{{ url_for('findPlaces') }}">Hotels and Restaurants</a>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
         <a href="javascript:void(0);" class="icon" onclick="openNav()">
@@ -35,7 +34,16 @@
         <div id="search_bar">
             <p>{% block header %}{% endblock %}</p>
             {% block content %}{% endblock %}
-
-            {% block content2 %}{% endblock %}
+            <section class="spacing"></section>
         </div>
+
+        <!-- <script type="text/javascript" src="/static/jquery-3.5.1.min.js"></script> -->
+        <script type=text/javascript src="{{
+            url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+        <script>
+            $(function() {
+                $('#search_bar').hide().show(300);
+            });
+        </script>
+
     </body>
