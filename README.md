@@ -15,26 +15,26 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 ***
 ## Implementation Details
 **Front-end**
-* 
+* a
 
 *Tools Used*
 * Figma
 
 **Back-end**
-* 
+* a
 
 *Tools Used*
 
 ***
 ## Issues Encountered
 **Bugs Fixed**
-* 
-* 
-* 
-* 
+* a
+* a
+* a
+* a
 
 **Future Work to be Done**
-* 
-* 
-* 
-* 
+* a
+* a
+* a
+* a
