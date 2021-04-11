@@ -27,13 +27,20 @@ def getCovidStat():
     if request.method == "POST":
 
         state = request.form["state"]
+        print("in app, state = " + state)
+        total, new, date = func.getCovidStatusFunc(state)
 
-        total, new = func.getCovidStatusFunc(state)
+        if (total==""):
+            noResult = True
+            showStat = False
+        else:
+            noResult = False
+            showStat = True
 
         # message = "Status: " + str(result)
         # return render_template("index.html", stat=str(message), showStat=True)      
 
-        return render_template("covid-stat.html", totalCases=total, newCases=new, showStat=True)    
+        return render_template("covid-stat.html", totalCases=total, newCases=new, date=date, showStat=showStat, noResult=noResult)    
 
     return render_template("covid-stat.html")
 

@@ -61,7 +61,11 @@ def getCovidStatusFunc(state):
     r = requests.get(url, params = params)
     
     if (r.status_code == 404):      # Request returns a 404 error
-        return "No section found."
+        return "", "", ""
+
+    if (r.json() == []):
+        print("list empty")
+        return "", "", ""
 
     r_json = r.json()[0]        # Get dictionary component of json
 
@@ -69,9 +73,9 @@ def getCovidStatusFunc(state):
     # result += "Total cases: " + r_json["tot_cases"] + "\n"
     # result += "New cases: " + r_json["new_case"] + "\n"
 
-    # print(result)
+    date = previous_2_days.strftime("%Y-%m-%d %H:%M")
 
-    return r_json["tot_cases"], r_json["new_case"]
+    return r_json["tot_cases"], r_json["new_case"], date
 
 def getFlightFunc():
 
