@@ -100,7 +100,7 @@ def findPlaces():
     
     return render_template("hotels.html")
 
-@app.route('/rest', methods=["POST", "GET"])
+@app.route('/restaurants', methods=["POST", "GET"])
 def findRest():
     if request.method == "POST":
         thePostalCode = request.form["zip_code"]
@@ -110,6 +110,8 @@ def findRest():
         
         # if ((not theCity) or (not thePostalCode)):
         #     return render_template("places.html")
+
+        print("hello")
         
         result = func.getRestaurants(thePostalCode)
         print(result)
@@ -121,9 +123,9 @@ def findRest():
             noResult = False
             showRes = True
 
-        return render_template("rest.html", res=result, showRes=showRes, noResult=noResult, input=input)
+        return render_template("restaurants.html", res=result, showRes=showRes, noResult=noResult, input=input)
     
-    return render_template("rest.html")
+    return render_template("restaurants.html")
 
 
 if __name__ == '__main__':

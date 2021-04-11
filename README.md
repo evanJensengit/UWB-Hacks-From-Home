@@ -1,4 +1,5 @@
 # Covid-19 Business Trip Planner
+**Track: Tools, Wildcard**
 
 ## Goals of the Project:
 Create a website to allow users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
@@ -40,7 +41,8 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 * Issue: displaying relevant information in a consumable format
 * Solution: using Flask framework to implement backend logic with python integrated with HTML/CSS
 
+* Issue: trouble with preprocessing CDC covid data
+* Solution: to create appropriate class labels so that Naive Bayes model can predict class
 
 **Future Work to be Done**
-* implement ML feature of showing the probability of user getting covid if they travel to city
-
+* Finish implementing Naive Bayes model for estimating COVID infection given being in a state

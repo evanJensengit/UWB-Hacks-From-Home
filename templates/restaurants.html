@@ -6,9 +6,9 @@
 {% block content %}
 <div id="search_bar">
     <p>Restaurants</p>
-    <form action="/rest" method="POST" id="findPlacesID">
+    <form action="/restaurants" method="POST" id="findRestaurantsID">
         <input type="text" name="zip_code" class="input_box" id="zip_code" placeholder="Enter zip code" onClick="this.select();">
-        <button id="submit_btn" form="findPlacesID" type="submit">Submit</button>
+        <button id="submit_btn" form="findRestaurantsID" type="submit">Submit</button>
     </form>
 </div>
 
