@@ -6,13 +6,13 @@ from amadeus import Client, ResponseError
 
 def main():
     # findVacinationSiteFunc("WA", 98144)
-    # testAmadeus()
+   
     # func.getCheapestFlight()
     #func.getCityCode()
-    # func.getHotelsFunc("seattle", "98101")
-
+    #message = func.getHotelsFunc("seattle", "98101")
+   # print(message)
     departCityCode = func.getCityCode("SEATTLE")
-    destCityCode = func.getCityCode("LAX")
+    destCityCode = func.getCityCode("redmond")
     print(departCityCode)
     print("\n"+ destCityCode)
     func.getCheapestFlight(departCityCode, destCityCode)
@@ -27,14 +27,16 @@ def testAmadeus():
         client_id='C9uBehZwr9GRWCwz0eNF0TSMHn1hVv2x',
         client_secret='gLkTCL8V32aLUOdV'
     )
-
+   
     try:
         response = amadeus.shopping.flight_offers_search.get(
             originLocationCode='SYD',
             destinationLocationCode='BKK',
             departureDate='2021-04-01',
             adults=1)
+        print ("after amadeus")
         print(response.json())
+        print("hi")
     except ResponseError as error:
         print(error)
 
