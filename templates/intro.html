@@ -11,22 +11,27 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/static/styles.css">
+        <script type="text/javascript" src="/static/intro.js"></script>
         <title>Business Trip Planner During Pandemic</title>
     </head>
 
     <body>
-        <h1 id="h1">Business Trip </h1>
+        <h1 id="website_name">Business Trip </h1>
         <div id="rectangle">
             <!-- Top Navigation Menu -->
             <!-- Navigation links (hidden by default) -->
-            <div id="myLinks">
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+            <div id="menu_links">
+                <a href="javascript:void(0)" class="close_menu" onclick="closeNav()">&times;</a>
+                <a href="#news">Home</a>
+                <a href="#contact">Vaccine Distribution Sites</a>
+                <a href="#about">Covid-19 Cases</a>
+                <a href="#about">Flights</a>
+                <a href="#about">Hotels</a>
+                <a href="#about">Restaurants</a>
             </div>
             <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
+            <a href="javascript:void(0);" class="icon" onclick="openNav()">
+                <img src="/static/align-right.png"/>
             </a>
             <p class="intro" id="intro_question">Traveling during Covid-19?</p>
             <p class="intro" id="intro_pitch">Check out recommended hotels, restaurants, and flights for your trip and information on the latest Covid cases and vaccine distribution sites near your destination.</p>
@@ -43,6 +48,6 @@
             </div>
             <button id="button1" type="button">Enter</button>
         </div>
-        <img id="pic1" src="/assets/image 1.png"/>
+        <img id="pic1" src="/static/image 1.png"/>
     </body>
 </html>

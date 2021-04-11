@@ -1,0 +1,125 @@
+#website_name {
+    position: absolute;
+    width: 324px;
+    height: 66px;
+    left: 76px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+
+    color: #597393;
+}
+
+#search_bar {
+    position: absolute;
+    width: 95%;
+    height: 15%;
+    left: 5%;
+    top: 20%;
+
+    background: #6781C6;
+    border-radius: 116px;
+}
+
+#page_name {
+    position: absolute;
+    width: 681px;
+    height: 16px;
+    top: 30%;
+    left: 5%;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    color: white;
+}
+
+#state_code {
+    left: 50%;
+}
+
+#zip_code {
+    left: 75%;
+}
+
+.input_box {
+    top: 30%;
+    position: absolute;
+    width: 270px;
+    height: 40px;
+}
+
+#menu_links {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: #6781C6;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    border-radius: 52px 0px 0px 52px;
+}
+
+#close_menu {
+  position: absolute;
+  top: 0;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#menu_links a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    display: block;
+    font-family: Inter;
+    font-size: 24px;
+}
+
+#menu_links a:hover {
+    background-color: white;
+    color: #597393;
+}
+
+a.icon {
+    position: absolute;
+    left: 90%;
+}
+
+.result {
+    position: absolute;
+    width: 612px;
+    height: 255px;
+    left: 5%;
+    top: 40%;
+
+    display: flex;
+    background: #DAE4ED;
+    border-radius: 65px;  
+    align-items: center;  
+}
+
+.result p {
+    font-family: Inter;
+    font-size: 24px;
+}
+
+#submit_btn {
+    position: absolute;
+    width: 134px;
+    height: 39px;
+    left: 85%;
+    top: 33%;
+
+    background: #597393;
+    border-radius: 65px;    
+    color: white;
+}
