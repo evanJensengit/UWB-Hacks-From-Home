@@ -1,1 +1,21 @@
 {% extends "base.html" %}
+{% block header %}
+<p id="page_name">Flights</p>
+{% endblock %}
+{% block content %}
+<form action="/covid-stat" method="POST" id="getStatID">
+    <input type="text" name="state" class="input_box" id="state_code">
+    <button id="submit_btn" form="getStatID" type="submit">Submit</button>
+</form>
+
+<div class="display">
+    {% if showStat == True %}
+        {% autoescape false %}
+            <div class="result">
+                <p></p>
+            </div>
+        {% endautoescape %}
+    {% endif %}
+</div>
+
+{% endblock %}

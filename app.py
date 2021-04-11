@@ -14,23 +14,29 @@ def findVaccinationSites():
         state = request.form["state"]
         zip_code = request.form["zip_code"]
 
-        result = func.findVacinationSiteFunc(state, zip_code)
+        result, messageLength = func.findVacinationSiteFunc(state, zip_code)
 
-        return render_template("vaccination-sites.html", message=result, showSites=True)
+        print(type(result))
+
+        return render_template("vaccination-sites.html", message=result, messageLength=messageLength, showSites=True)
 
     return render_template("vaccination-sites.html")
 
-#@app.route('/covid-stat', methods=["POST", "GET"])
-#def getCovidStat():
-    #if request.method == "POST":
+@app.route('/covid-stat', methods=["POST", "GET"])
+def getCovidStat():
+    if request.method == "POST":
 
-        # input = request.form["input"]
+        state = request.form["state"]
 
-        #result = func.getCovidStatusFunc()
+        total, new = func.getCovidStatusFunc(state)
 
-        #message = "Status: " + str(result)
+        # message = "Status: " + str(result)
+        # return render_template("index.html", stat=str(message), showStat=True)      
 
-        #return render_template("index.html", stat=str(message), showStat=True)      
+        return render_template("covid-stat.html", totalCases=total, newCases=new, showStat=True)    
+
+    return render_template("covid-stat.html")
+
 
 @app.route('/flights', methods=["POST", "GET"])
 def getFlights():

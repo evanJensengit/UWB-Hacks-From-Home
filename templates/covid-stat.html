@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block header %}
+<p id="page_name">Total COVID-19 Cases</p>
+{% endblock %}
+{% block content %}
+<form action="/covid-stat" method="POST" id="getStatID">
+    <input type="text" name="state" class="input_box" id="state_code">
+    <button id="submit_btn" form="getStatID" type="submit">Submit</button>
+</form>
+
+<div class="display">
+    {% if showStat == True %}
+        {% autoescape false %}
+            <div class="result">
+                <p>Total cases: {{totalCases}}</p>
+                <p>New cases: {{newCases}}</p>
+            </div>
+        {% endautoescape %}
+    {% endif %}
+</div>
+
+{% endblock %}
+
+
+{% block content2 %}
+<form action="/covid-stat" method="POST" id="getStatID">
+    <input type="text" name="state" class="input_box" id="state_code">
+    <button id="submit_btn" form="getStatID" type="submit">Submit</button>
+</form>
+
+<div class="display">
+    {% if showStat == True %}
+        {% autoescape false %}
+            <div class="result">
+                <p>Total cases: {{totalCases}}</p>
+                <p>New cases: {{newCases}}</p>
+            </div>
+        {% endautoescape %}
+    {% endif %}
+</div>
+
+{% endblock %}

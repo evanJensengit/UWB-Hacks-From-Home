@@ -36,7 +36,10 @@ def findVacinationSiteFunc(state, zip_code):
             result += "&emsp;&emsp;&emsp;" + item['properties']['city'] + ", " + item['properties']['state'] + " " + item['properties']['postal_code'] + "<br/>"
             result += "See more at " + item['properties']['url'] + "<br/><br/>"
             message.append(result)
-    return message
+
+    print("message len: ", len(message))
+
+    return message, len(message)
 
 
 def getCovidStatusFunc(state):
@@ -62,13 +65,13 @@ def getCovidStatusFunc(state):
 
     r_json = r.json()[0]        # Get dictionary component of json
 
-    result = "Result at WA state from " + previous_2_days.strftime("%Y-%m-%d %H:%M") + "\n"
-    result += "Total cases: " + r_json["tot_cases"] + "\n"
-    result += "New cases: " + r_json["new_case"] + "\n"
+    # result = "Result at " + state.upper() + " state from " + previous_2_days.strftime("%Y-%m-%d %H:%M") + "\n"
+    # result += "Total cases: " + r_json["tot_cases"] + "\n"
+    # result += "New cases: " + r_json["new_case"] + "\n"
 
-    print(result)
+    # print(result)
 
-    return result
+    return r_json["tot_cases"], r_json["new_case"]
 
 def getFlightFunc():
 
