@@ -14,8 +14,9 @@ def main():
 
     # func.getCheapestFlight("SEA", "LAX")
     # func.getCityCode('Los Angeles')
-   # func.getRestaurants(47.44889, -122.3094, 10)
-    a, b = func.getCovidStatusFunc("WA")
+    result = func.getRestaurants(code=98011)
+    print(result)
+    '''a, b = func.getCovidStatusFunc("WA")
 
     print(a, b)
 
@@ -56,7 +57,7 @@ def findVacinationSiteFunc(state, zip_code):
             result += "Address: " + item['properties']['address'] + "<br/> \n"
             result += "See more at " + item['properties']['url'] + "<br/><br/> \n\n"
 
-    print(result)
+    print(result)'''
 
 if __name__ == "__main__":
     # execute only if run as a script
