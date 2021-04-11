@@ -17,7 +17,7 @@
     position: absolute;
     width: 95%;
     height: 15%;
-    left: 5%;
+    left: 2%;
     top: 20%;
 
     background: #6781C6;
@@ -95,11 +95,8 @@ a.icon {
 }
 
 .result {
-    position: absolute;
-    width: 612px;
+    width: 550px;
     height: 255px;
-    left: 5%;
-    top: 40%;
 
     display: flex;
     background: #DAE4ED;
@@ -112,12 +109,21 @@ a.icon {
     font-size: 24px;
 }
 
+.display {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    left: 1%;
+    top: 90%;
+}
+
 #submit_btn {
     position: absolute;
     width: 134px;
     height: 39px;
     left: 85%;
-    top: 50%;
+    top: 80%;
 
     background: #597393;
     border-radius: 65px;    

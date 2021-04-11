@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('vaccination-sites.html')
+    return render_template('intro.html')
 
 @app.route('/vaccination-sites', methods=["POST", "GET"])
 def findVaccinationSites():
@@ -16,9 +16,7 @@ def findVaccinationSites():
 
         result = func.findVacinationSiteFunc(state, zip_code)
 
-        message = "Here are the available sites: <br/><br/>" + str(result)
-
-        return render_template("vaccination-sites.html", message=str(message), showSites=True)
+        return render_template("vaccination-sites.html", message=result, showSites=True)
 
     return render_template("vaccination-sites.html")
 
@@ -48,8 +46,8 @@ def getFlights():
         return render_template("index.html", flights=str(message), showFlights=True)
 
 
-@app.route('/hotels', methods=["POST", "GET"])
-def findHotels():
+@app.route('/places', methods=["POST", "GET"])
+def findPlaces():
 
     if request.method == "POST":
         
@@ -57,14 +55,13 @@ def findHotels():
         thePostalCode = request.form["postalCode"]
         
         if ((not theCity) or (not thePostalCode)):
-            return render_template("index.html")
+            return render_template("places.html")
         
         result = func.getHotelsFunc(theCity, thePostalCode)
 
-        message = "Status: " + str(result)
-
-        return render_template("index.html", hotels=str(message), showHotels=True)
-    return render_template("index.html")
+        return render_template("index.html", hotels=message, showHotels=True)
+    
+    return render_template("places.html")
 
 
 if __name__ == '__main__':

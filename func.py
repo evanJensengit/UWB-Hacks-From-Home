@@ -25,6 +25,8 @@ def findVacinationSiteFunc(state, zip_code):
 
     result = ""
 
+    message = []
+
     #iterate through sites and find properties and postal code that match the user query
     
     for item in r_json['features']:
@@ -33,8 +35,8 @@ def findVacinationSiteFunc(state, zip_code):
             result += "Address: " + item['properties']['address'] + "<br/>"
             result += "&emsp;&emsp;&emsp;" + item['properties']['city'] + ", " + item['properties']['state'] + " " + item['properties']['postal_code'] + "<br/>"
             result += "See more at " + item['properties']['url'] + "<br/><br/>"
-
-    return result
+            message.append(result)
+    return message
 
 
 def getCovidStatusFunc(state):

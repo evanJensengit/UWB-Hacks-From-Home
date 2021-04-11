@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/base.css">
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='base.css') }}">
         <script type="text/javascript" src="/static/intro.js"></script>
         <title>Business Trip Planner During Pandemic</title>
     </head>
@@ -21,8 +21,8 @@
         <!-- Navigation links (hidden by default) -->
         <div id="menu_links">
             <a href="javascript:void(0)" class="close_menu" onclick="closeNav()">&times;</a>
-            <a href="{{ url_for('intro') }}">Home</a>
-            <a href="{{ url_for('vaccination-sites') }}">Vaccine Distribution Sites</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('findVaccinationSites') }}">Vaccine Distribution Sites</a>
             <a href="">Covid-19 Cases</a>
             <a href="">Flights</a>
             <a href="">Hotels</a>
@@ -35,4 +35,5 @@
         <div id="search_bar">
             <p>{% block header %}{% endblock %}</p>
             {% block content %}{% endblock %}
+        </div>
     </body>

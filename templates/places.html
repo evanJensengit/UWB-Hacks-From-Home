@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block header %}
+<p id="page_name">Vaccine Sites</p>
+{% endblock %}
+{% block content %}
+<form action="/places" method="POST" id="findPlacesID">
+    <input type="text" name="city" class="input_box" id="state_code">
+    <input type="text" name="zip_code" class="input_box" id="zip_code">
+    <button id="submit_btn" form="findSitesID" type="submit">Submit</button>
+</form>
+{% if showHotels == True %}
+    {% autoescape false %}
+    <div class="result">
+        <p>{{message}}</p>
+    </div>
+    {% endautoescape %}
+{% endif %}
+{% endblock %}
