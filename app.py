@@ -61,18 +61,19 @@ def getFlights():
 
 @app.route('/places', methods=["POST", "GET"])
 def findPlaces():
-
     if request.method == "POST":
+
+        print("hi")
         
         theCity = request.form["city"] #is this correct way to do it?
-        thePostalCode = request.form["postalCode"]
+        thePostalCode = request.form["zip_code"]
         
-        if ((not theCity) or (not thePostalCode)):
-            return render_template("places.html")
+        # if ((not theCity) or (not thePostalCode)):
+        #     return render_template("places.html")
         
         result = func.getHotelsFunc(theCity, thePostalCode)
 
-        return render_template("index.html", hotels=message, showHotels=True)
+        return render_template("places.html", hotels=result, showHotels=True)
     
     return render_template("places.html")
 

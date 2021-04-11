@@ -64,7 +64,6 @@ def getCovidStatusFunc(state):
         return "", "", ""
 
     if (r.json() == []):
-        print("list empty")
         return "", "", ""
 
     r_json = r.json()[0]        # Get dictionary component of json
@@ -77,39 +76,6 @@ def getCovidStatusFunc(state):
 
     return r_json["tot_cases"], r_json["new_case"], date
 
-def getFlightFunc():
-
-    # https://aviationstack.com/documentation
-
-    url = 'http://api.aviationstack.com/v1/flights'
-
-    params = {
-    'access_key': '6080d6c8612fe957573d69b0b0202675',
-    'limit':'10'
-    }
-
-    api_result = requests.get(url, params)
-
-    print(api_result)
-
-    api_response = api_result.json()
-
-    # for flight in api_response:
-    #     if (flight['live']['is_ground'] is False):
-    #         print(u'%s flight %s from %s (%s) to %s (%s) is in the air.' % (
-    #             flight['airline']['name'],
-    #             flight['flight']['iata'],
-    #             flight['departure']['airport'],
-    #             flight['departure']['iata'],
-    #             flight['arrival']['airport'],
-    #             flight['arrival']['iata']))
-
-    # parsed = json.loads(r_json)
-    # print(json.dumps(api_response, indent=3))
-
-    # result = json.dumps(r_json, indent=3)
-
-    return "Result"
 
 def getCheapestFlight(depart, dest):
     try:
@@ -154,6 +120,7 @@ def getCityCode(city):
             result += code["geoCode"]["latitude"]
             result += code["geoCode"]["longitude"]
         return result
+
     except ResponseError as error:
         raise error
 
@@ -163,6 +130,8 @@ def getHotelsFunc(city, postal_code):
         theCityCode = city[0 : 3]
         # Get list of Hotels by city code
         hotels_by_city = amadeus.shopping.hotel_offers.get(cityCode=theCityCode, postalCode = postal_code)
+
+        print("city: " + city)
         
         result = ""
         #print(hotels_by_city.data)

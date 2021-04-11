@@ -4,15 +4,18 @@
 {% endblock %}
 {% block content %}
 <form action="/places" method="POST" id="findPlacesID">
-    <input type="text" name="city" class="input_box" id="state_code">
-    <input type="text" name="zip_code" class="input_box" id="zip_code">
-    <button id="submit_btn" form="findSitesID" type="submit">Submit</button>
+    <input type="text" name="city" class="input_box" id="state_code" value="Enter a city" onClick="this.select();">
+    <input type="text" name="zip_code" class="input_box" id="zip_code" value="Enter zip code" onClick="this.select();">
+    <button id="submit_btn" form="findPlacesID" type="submit">Submit</button>
 </form>
+
+<div class="display">
 {% if showHotels == True %}
     {% autoescape false %}
     <div class="result">
-        <p>{{message}}</p>
+        <p>{{hotels}}</p>
     </div>
     {% endautoescape %}
 {% endif %}
 {% endblock %}
+</div>
