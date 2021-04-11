@@ -78,7 +78,6 @@ def getCovidStatusFunc(state):
 
 
 def getCheapestFlight(depart, dest):
-    print ("before try")
     amadeus = Client(
         client_id='C9uBehZwr9GRWCwz0eNF0TSMHn1hVv2x',
         client_secret='gLkTCL8V32aLUOdV'
@@ -91,31 +90,29 @@ def getCheapestFlight(depart, dest):
         dest = str(dest)
         message = []
         # response = amadeus.shopping.flight_offers_search.get(originLocationCode='SEA', destinationLocationCode='LAX', departureDate='2021-04-10', returnDate='2021-04-18', adults=1, max=1)
-        response = amadeus.shopping.flight_offers_search.get(originLocationCode=depart, destinationLocationCode=dest, departureDate=datetime.today().strftime('%Y-%m-%d'), adults=1)
+        returnD = datetime.today() + timedelta(days=7)
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode=depart, destinationLocationCode=dest, departureDate=datetime.today().strftime('%Y-%m-%d'), returnDate=returnD.strftime('%Y-%m-%d'), adults=1)
         result = ""
         rangeFlight = len(response.data)
+        print(response.data)
         for index in range(0, rangeFlight): 
             flight = response.data[index]
             data = flight["itineraries"]
             for item in data:
-                segment = item["segments"][0]
-                result += "Airline: " + segment["carrierCode"] + "<br/>"
+                segment1 = item["segments"][0]
+                result += "Airline: " + segment1["carrierCode"] + "<br/>"
+                result += "From: " + segment1["departure"]["iataCode"] + "<br/>"
+                result += "Departure date: " + segment1["departure"]["at"] + "<br/>"
+                result += "To: " + segment1["arrival"]["iataCode"] + "<br/>"
+                result += "Return date: " + segment1["departure"]["at"] + "<br/>"
+                '''result += "Airline: " + segment["carrierCode"] + "<br/>"
                 result += "From: " + segment["departure"]["iataCode"] + "<br/>"
                 result += "Departure date: " + segment["departure"]["at"] + "<br/>"
                 result += "To: " + segment["departure"]["iataCode"] + "<br/>"
-                result += "Return date: " + segment["departure"]["at"] + "<br/>"
-                result += "Airline: " + segment["carrierCode"] + "<br/>"
-                result += "From: " + segment["departure"]["iataCode"] + "<br/>"
-                result += "Departure date: " + segment["departure"]["at"] + "<br/>"
-                result += "To: " + segment["departure"]["iataCode"] + "<br/>"
-                result += "Return date: " + segment["departure"]["at"] + "<br/>"
-
-                message.append(result)
-                result = ""
-    
-        result += "Price: " + flight["price"]["total"]
-        # print(result)
-        print(message)
+                result += "Return date: " + segment["departure"]["at"] + "<br/>"'''
+            result += "Price: " + flight["price"]["total"]
+            message.append(result)
+            result = ""
         return message
     except ResponseError as error:
         raise error

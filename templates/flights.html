@@ -13,17 +13,17 @@
     </form>
 </div>
 
-<div class="display">
-    {% if showFlights == True %}
+{% if showFlights == True %}
         {% autoescape false %}
-            <p>Here are the flights that we can find:</p>
+            <p class="p_result">Here are the flights that we can find:</p>
+            <div class="display">
             {% for items in flights %}
-                <div class="result">
+                <div class="resultF">
                     <p>{{items}}</p>
                 </div>
             {% endfor %}
         {% endautoescape %}
-    {% endif %}
+{% endif %}
     
     {% if noResult == True %}
     <div class="result">
