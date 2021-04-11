@@ -7,7 +7,7 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 
 ***
 ## Desired User Experience
-* Ease-of-use control for the website
+* Ease-of-use control and navigation for the website
 * Organized information details for listed resources
 * 
 
