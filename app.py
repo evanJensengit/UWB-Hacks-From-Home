@@ -53,13 +53,26 @@ def getFlights():
     if request.method == "POST":
 
         # input = request.form["input"]
+        
+        departCity = request.form["depart"]
+        destCity = request.form["dest"]
+      
+        departCityCode = func.getCityCode(departCity)
+        destCityCode = func.getCityCode(destCity)
+        
 
-        result = func.getFlightFunc()
-
+        result = func.getCheapestFlight(departCityCode, destCityCode)
+         
+        if (result==""):         # if no info is found
+            noResult = True
+            showFlights = False
+        else:                   # information found
+            noResult = False
+            showFlights = True
         message = "Status: " + str(result)
 
-        return render_template("index.html", flights=str(message), showFlights=True)
-
+        return render_template("flights.html", flights=str(message), showFlights=True)
+    return render_template("flights.html")
 
 @app.route('/places', methods=["POST", "GET"])
 def findPlaces():
