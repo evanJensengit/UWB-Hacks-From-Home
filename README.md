@@ -18,7 +18,7 @@ Our website allows users to easily plan business trips around the U.S. by having
 ***
 ## Implementation Details
 **Front-end**
-We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.
+<br/>We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.
 
 **Back-end**
 * Azure - hosted website in the cloud to be publicly accessible on Microsoft Azure
