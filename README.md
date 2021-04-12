@@ -1,8 +1,10 @@
 # Covid-19 Business Trip Planner
-**Visit our website at http://businesstripfinder.azurewebsites.net/.**
-**This is a project for the UWB Hacks From Home (https://uwbhacks-from-home.devpost.com/) - the fourth annual (and second virtual!) hackathon at the University of Washington, Bothell. You can find more details about our site at https://devpost.com/software/business-trip-planner.**
-**Here is a demo video of the website: https://www.youtube.com/watch?v=lTEepG5xxQY.
-**Track: Tools, Wildcard**
+Visit our website at http://businesstripfinder.azurewebsites.net/.<br/><br/>
+
+This is a project for the <a href="https://uwbhacks-from-home.devpost.com/">UWB Hacks From Home</a> - the fourth annual (and second virtual!) hackathon at the University of Washington, Bothell. You can find more details about our site at <a href="https://devpost.com/software/business-trip-planner.">Devpost</a> <br/><br/>
+
+Here is a demo video of the website: https://www.youtube.com/watch?v=lTEepG5xxQY.
+
 
 ## Goals of the Project:
 Our website allows users to easily plan business trips around the U.S. by having details of flights, restaurants, and hotels. We also combined features of helping to understand the current ongoing COVID-19 cases in the designated areas, as well as areas for vaccine distribution sites that may be necessary prior from traveling. As a result, the goal of our project is to inform the COVID-19 situations (and vaccine distribution sites) for our users who are flying across states and offering recommended resources available around them.
