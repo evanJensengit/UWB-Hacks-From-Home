@@ -21,11 +21,11 @@ Our website allows users to easily plan business trips around the U.S. by having
 We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.
 
 **Back-end**
-*Azure - hosted website in the cloud to be publicly accessible on Microsoft Azure
-*Python - the main programming language
-*Flask - web application framework
-*Using their PaaS tools Resource groups and App services
-*APIs: CDC, Amadeus, Documenu
+* Azure - hosted website in the cloud to be publicly accessible on Microsoft Azure
+* Python - the main programming language
+* Flask - web application framework
+* Using their PaaS tools Resource groups and App services
+* APIs: CDC, Amadeus, Documenu
 
 ***
 ## Issues Encountered
