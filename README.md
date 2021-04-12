@@ -1,7 +1,7 @@
 # Covid-19 Business Trip Planner
 Visit our website at http://businesstripfinder.azurewebsites.net/.<br/>
 
-This is a project for the <a href="https://uwbhacks-from-home.devpost.com/">UWB Hacks From Home</a> - the fourth annual (and second virtual!) hackathon at the University of Washington, Bothell. You can find more details about our site at <a href="https://devpost.com/software/business-trip-planner.">Devpost.</a><br/>
+This is a project for <a href="https://uwbhacks-from-home.devpost.com/">UWB Hacks From Home</a> - the fourth annual (and second virtual!) hackathon at the University of Washington, Bothell. You can find more details about our site at <a href="https://devpost.com/software/business-trip-planner">Devpost</a>.<br/>
 
 Check out the demo video of our website: https://www.youtube.com/watch?v=lTEepG5xxQY.
 
@@ -18,7 +18,8 @@ Our website allows users to easily plan business trips around the U.S. by having
 ***
 ## Implementation Details
 **Front-end**
-<br/>We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.
+<br/>We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.<br/>
+Check out the prototype of our website's design on <a href="https://www.figma.com/proto/I42E4Uyyi7FMWuUziAdV8B/Website?node-id=3%3A7&scaling=min-zoom&page-id=0%3A1">Figma</a>.
 
 **Back-end**
 * Azure - hosted website in the cloud to be publicly accessible on Microsoft Azure
