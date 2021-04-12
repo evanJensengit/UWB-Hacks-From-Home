@@ -1,10 +1,11 @@
 # Covid-19 Business Trip Planner
+**Visit our website at http://businesstripfinder.azurewebsites.net/.**
+**This is a project for the UWB Hacks From Home (https://uwbhacks-from-home.devpost.com/) - the fourth annual (and second virtual!) hackathon at the University of Washington, Bothell. You can find more details about our site at https://devpost.com/software/business-trip-planner.**
+**Here is a demo video of the website: https://www.youtube.com/watch?v=lTEepG5xxQY.
 **Track: Tools, Wildcard**
 
 ## Goals of the Project:
-Create a website to allow users to easily plan business trips around the U.S. by having details of flights, restaurants, hotels and vaccine distribution centers all on the businesstripplanner website. 
-We also combined features of helping to understand the current ongoing covid-19 cases in the designated areas, as well as areas for vaccine distribution sites that may be necessary prior from traveling. 
-As a result, the goal of our project is to inform the covid-19 situations (and vaccine distribution sites) for our users who are flying across states and offering recommended resources available around them.
+Our website allows users to easily plan business trips around the U.S. by having details of flights, restaurants, and hotels. We also combined features of helping to understand the current ongoing COVID-19 cases in the designated areas, as well as areas for vaccine distribution sites that may be necessary prior from traveling. As a result, the goal of our project is to inform the COVID-19 situations (and vaccine distribution sites) for our users who are flying across states and offering recommended resources available around them.
 
 ***
 ## Desired User Experience
@@ -15,19 +16,14 @@ As a result, the goal of our project is to inform the covid-19 situations (and v
 ***
 ## Implementation Details
 **Front-end**
-
-*Tools Used*
-* Figma
-
+We came up with the design and created the wireframes for every page using Figma. We then utilized HTML, CSS, and JavaScript to build our website.
 
 **Back-end**
-
-*Tools Used*
-* Azure - hosted website in the cloud to be publicly accesseble on Microsoft Azure 
-* using their PaaS tools Resource groups and App services 
-* VisualStudio
-* Flask stack
-* Amadeus API  
+*Azure - hosted website in the cloud to be publicly accessible on Microsoft Azure
+*Python - the main programming language
+*Flask - web application framework
+*Using their PaaS tools Resource groups and App services
+*APIs: CDC, Amadeus, Documenu
 
 ***
 ## Issues Encountered
